@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { useState, useEffect } from "react";
+import { CDN_URL } from "../utils/constants";
 
 export default function Resturant() {
   const [resturantCard, setResturantCard] = useState([]);
+  console.log(resturantCard);
 
   useEffect(() => {
     fetchData();
@@ -15,21 +17,22 @@ export default function Resturant() {
     );
     const response = await data.json();
     // console.log(response);
-    setResturantCard(
-      response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+
+    setResturantCard(response.data);
   };
 
-  return resturantCard === 0 ? (
-    <Shimmer />
-  ) : (
+  return (
     <>
-      <div className="res-card">
-        {resturantCard.map((item) => (
-          <p>{item.info.name}</p>
-        ))}
-      </div>
+      {response.map((item) => (
+        <div className="res-card">
+          <h4>
+            {
+              resturantCard?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+                ?.restaurants?.info?.avgRating
+            }
+          </h4>
+        </div>
+      ))}
     </>
   );
 }
