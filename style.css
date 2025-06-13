@@ -43,3 +43,8 @@
   flex-wrap: wrap;
   gap: 5px;
 }
+
+.filter-btn {
+  margin: 10px 0;
+  cursor: pointer;
+}
