@@ -1,6 +1,7 @@
 import data from "../utils/mockData";
 import ResturantCard from "../components/ResturantCard";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   function filter() {
@@ -21,14 +22,13 @@ const Body = () => {
       response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
-    console.log(
-      response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
   };
 
   const [listOfResturant, setListOfResturant] = useState([]);
-  return (
+
+  return listOfResturant.length === 0 ? (
+    <Shimmer />
+  ) : (
     <>
       <div className="body">
         <div className="filter">

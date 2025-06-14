@@ -7,7 +7,7 @@ import data from "../utils/mockData";
 const ResturantCard = (props) => {
   const { resData } = props;
 
-  const { name, cuisines, avgRating } = resData?.info;
+  const { name, cuisines, avgRating, id } = resData?.info;
   return (
     <>
       <div className="res-card">
