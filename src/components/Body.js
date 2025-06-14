@@ -22,9 +22,19 @@ const Body = () => {
       response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
+
+    console.log(
+      response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants[0]?.info?.name
+    );
   };
 
   const [listOfResturant, setListOfResturant] = useState([]);
+  const [filterList, setFilterList] = useState("");
+
+  function inputText(e) {
+    setFilterList(e.target.value);
+  }
 
   return listOfResturant.length === 0 ? (
     <Shimmer />
@@ -32,9 +42,29 @@ const Body = () => {
     <>
       <div className="body">
         <div className="filter">
-          <button onClick={filter} className="filter-btn">
-            Top Rated Resturant
-          </button>
+          <div className="search">
+            <input
+              onChange={inputText}
+              type="text"
+              className="search-box"
+              value={filterList}
+            />
+            <button
+              onClick={() => {
+                const filteredResturant = listOfResturant.filter((res) => {
+                  res.info.name
+                    .toLowerCase()
+                    .includes(filterList.toLowerCase());
+                  console.log(res);
+                });
+                console.log(filteredResturant);
+                setListOfResturant(filteredResturant);
+              }}
+            >
+              Search
+            </button>
+          </div>
+          <button className="filter-btn">Top Rated Resturant</button>
         </div>
         <div className="res-container">
           {listOfResturant.map((item, index) => (

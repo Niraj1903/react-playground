@@ -60,3 +60,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.filter {
+  display: flex;
+}
