@@ -22,11 +22,6 @@ const Body = () => {
       response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
-
-    console.log(
-      response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants[0]?.info?.name
-    );
   };
 
   const [listOfResturant, setListOfResturant] = useState([]);
