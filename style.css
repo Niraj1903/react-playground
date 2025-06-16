@@ -17,6 +17,7 @@
   padding: 10px;
   margin: 10px;
   list-style: none;
+  cursor: pointer;
 }
 
 .res-card {
