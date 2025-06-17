@@ -6,7 +6,6 @@ import { useParams } from "react-router";
 
 const ResturantMenu = () => {
   const { resId } = useParams();
-  console.log(resId);
   const [resturantMenuData, setResturantMenuData] = useState(null);
 
   useEffect(() => {
@@ -24,7 +23,6 @@ const ResturantMenu = () => {
   const { itemCards } =
     resturantMenuData?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]
       ?.card?.card;
-  console.log(itemCards);
 
   const { name, costForTwoMessage, avgRating, cuisines } =
     resturantMenuData?.cards[2]?.card?.card?.info;

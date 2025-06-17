@@ -31,7 +31,6 @@ const Body = () => {
   function inputText(e) {
     setFilterList(e.target.value);
   }
-  console.log(listOfResturant);
 
   return listOfResturant.length === 0 ? (
     <Shimmer />
