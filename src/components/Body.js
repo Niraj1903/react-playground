@@ -2,6 +2,7 @@ import data from "../utils/mockData";
 import ResturantCard from "../components/ResturantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router";
 
 const Body = () => {
   function filter() {
@@ -30,6 +31,7 @@ const Body = () => {
   function inputText(e) {
     setFilterList(e.target.value);
   }
+  console.log(listOfResturant);
 
   return listOfResturant.length === 0 ? (
     <Shimmer />
@@ -59,11 +61,15 @@ const Body = () => {
               Search
             </button>
           </div>
-          <button className="filter-btn">Top Rated Resturant</button>
+          <button onClick={filter} className="filter-btn">
+            Top Rated Resturant
+          </button>
         </div>
         <div className="res-container">
-          {listOfResturant.map((item, index) => (
-            <ResturantCard key={index} resData={item} />
+          {listOfResturant.map((item) => (
+            <Link key={item.info.id} to={"/resturants/" + item.info.id}>
+              <ResturantCard resData={item} />
+            </Link>
           ))}
         </div>
       </div>
