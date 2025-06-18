@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { useState } from "react";
 import { Link } from "react-router";
+import useNetworkStatus from "../utils/useNetworkStatus";
 
 export default function Header() {
+  const networkStatus = useNetworkStatus();
   const [btn, SetBtn] = useState("Login");
   function toggle() {
     SetBtn((prev) => (prev === "Login" ? "Logout" : "Login"));
@@ -21,6 +23,7 @@ export default function Header() {
 
         <div className="nav-items">
           <ul>
+            <li>NetworkStatus: {networkStatus ? "🟢" : "🔴"} </li>
             <li>
               <Link to="/">Home</Link>
             </li>

@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { RESTURANT_API } from "../utils/constants";
 import { Link } from "react-router";
+import useNetworkStatus from "../utils/useNetworkStatus";
 
 const Body = () => {
+  const networkStatus = useNetworkStatus();
+
   function filter() {
     const filteredList = data.filter((item) => item.info.avgRating > 4);
     setListOfResturant(filteredList);
@@ -26,6 +29,9 @@ const Body = () => {
 
   const [listOfResturant, setListOfResturant] = useState([]);
   const [filterList, setFilterList] = useState("");
+
+  if (networkStatus === false)
+    return <h1>You are offline !! Please check your internet connection</h1>;
 
   function inputText(e) {
     setFilterList(e.target.value);
