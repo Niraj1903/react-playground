@@ -1,30 +1,21 @@
-import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-import { RESTURANT_MENU_IMG_URL, RESTURANT_MENU_API } from "../utils/constants";
+import { RESTURANT_MENU_IMG_URL } from "../utils/constants";
 import { useParams } from "react-router";
+import useResturantMenu from "../utils/useResturantMenu";
 
 const ResturantMenu = () => {
   const { resId } = useParams();
-  const [resturantMenuData, setResturantMenuData] = useState(null);
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  const menuItem = useResturantMenu(resId);
 
-  const fetchMenu = async () => {
-    const menuData = await fetch(RESTURANT_MENU_API + resId);
-    const menuDataResponse = await menuData.json();
-    setResturantMenuData(menuDataResponse.data);
-  };
-
-  if (resturantMenuData === null) return <Shimmer />;
+  if (menuItem === null) return <Shimmer />;
 
   const { itemCards } =
-    resturantMenuData?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
-      ?.card?.card;
+    menuItem?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+      ?.card;
 
   const { name, costForTwoMessage, avgRating, cuisines } =
-    resturantMenuData?.cards[2]?.card?.card?.info;
+    menuItem?.cards[2]?.card?.card?.info;
 
   return (
     <>
@@ -38,7 +29,7 @@ const ResturantMenu = () => {
             {itemCards?.map((menuItem) => (
               <li key={menuItem?.card?.info?.id}>
                 <img
-                  src={RESTURANT_MENU_IMG_URL + menuItem.card.info.imageId}
+                  src={RESTURANT_MENU_IMG_URL + menuItem?.card?.info?.imageId}
                   alt="MENU-LOGO"
                 />
                 <h4>{menuItem?.card?.info?.name}</h4>

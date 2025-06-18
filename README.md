@@ -7,3 +7,7 @@ Whenever State variables updates, react triggers a reconciliation cycle (re-rend
 Whenever a function start with use its a hook in react
 
 React uses Client side Routing not Server side Routing
+
+Never comapre React life Cycle method to functional component
+
+return in useEffect if done it will be called while on unmounting component

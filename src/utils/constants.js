@@ -12,10 +12,12 @@ const RESTURANT_MENU_API =
 const RESTURANT_API =
   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.8467244&lng=77.6431526&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
+const GITHUB_API = "https://api.github.com/users/niraj1903";
 export {
   CDN_URL,
   LOGO_URL,
   RESTURANT_MENU_IMG_URL,
   RESTURANT_MENU_API,
   RESTURANT_API,
+  GITHUB_API,
 };
