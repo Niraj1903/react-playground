@@ -2,6 +2,7 @@ import data from "../utils/mockData";
 import ResturantCard from "../components/ResturantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { RESTURANT_API } from "../utils/constants";
 import { Link } from "react-router";
 
 const Body = () => {
@@ -15,9 +16,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const dataResturant = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.8467244&lng=77.6431526&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const dataResturant = await fetch(RESTURANT_API);
     const response = await dataResturant.json();
     setListOfResturant(
       response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
