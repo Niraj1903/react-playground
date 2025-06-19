@@ -23,7 +23,7 @@ export default function Header() {
 
         <div className="nav-items">
           <ul>
-            <li>NetworkStatus: {networkStatus ? "🟢" : "🔴"} </li>
+            <li>🛜{networkStatus ? "🟢" : "🔴"} </li>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -32,6 +32,9 @@ export default function Header() {
             </li>
             <li>
               <Link to="/contact">Contact Us</Link>
+            </li>
+            <li>
+              <Link to="/instamart">InstaMart</Link>
             </li>
             <li>Cart</li>
             <button onClick={toggle}>{btn}</button>
