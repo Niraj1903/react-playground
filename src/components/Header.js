@@ -12,17 +12,17 @@ export default function Header() {
   }
   return (
     <>
-      <div className="header">
+      <div className="flex justify-between">
         <div className="logo-container">
           <img
             src="https://images.app.goo.gl/WUhgcwvffcubLNo36"
             alt="LOGO"
-            className="logo"
+            className="w-56"
           />
         </div>
 
-        <div className="nav-items">
-          <ul>
+        <div>
+          <ul className="flex m-10">
             <li>🛜{networkStatus ? "🟢" : "🔴"} </li>
             <li>
               <Link to="/">Home</Link>
