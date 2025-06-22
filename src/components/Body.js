@@ -1,5 +1,5 @@
 import data from "../utils/mockData";
-import ResturantCard from "../components/ResturantCard";
+import ResturantCard, { withPromotedLabel } from "../components/ResturantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { RESTURANT_API } from "../utils/constants";
