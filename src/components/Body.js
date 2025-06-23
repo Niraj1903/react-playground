@@ -7,6 +7,7 @@ import { Link } from "react-router";
 import useNetworkStatus from "../utils/useNetworkStatus";
 
 const Body = () => {
+  const ResturantCardPromoted = withPromotedLabel(ResturantCard);
   const networkStatus = useNetworkStatus();
 
   function filter() {
