@@ -73,7 +73,7 @@ const Body = () => {
         <div className="res-container">
           {listOfResturant.map((item) => (
             <Link key={item.info.id} to={"/resturants/" + item.info.id}>
-              {item.info.name ? (
+              {item.info.avgRating > 4.5 ? (
                 <ResturantCardPromoted resData={item} />
               ) : (
                 <ResturantCard resData={item} />
