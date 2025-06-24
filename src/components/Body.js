@@ -73,7 +73,11 @@ const Body = () => {
         <div className="res-container">
           {listOfResturant.map((item) => (
             <Link key={item.info.id} to={"/resturants/" + item.info.id}>
-              <ResturantCard resData={item} />
+              {item.info.name ? (
+                <ResturantCardPromoted resData={item} />
+              ) : (
+                <ResturantCard resData={item} />
+              )}
             </Link>
           ))}
         </div>
