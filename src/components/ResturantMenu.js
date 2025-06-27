@@ -3,9 +3,13 @@ import { RESTURANT_MENU_IMG_URL } from "../utils/constants";
 import { useParams } from "react-router";
 import useResturantMenu from "../utils/useResturantMenu";
 import ResturantCategory from "./ResturantCategory";
+import UserContext from "../utils/UserContext";
+import { useContext } from "react";
 
 const ResturantMenu = () => {
   const { resId } = useParams();
+
+  const user = useContext(UserContext);
 
   const menuItem = useResturantMenu(resId);
 
@@ -25,8 +29,6 @@ const ResturantMenu = () => {
       }
     );
 
-  console.log(categories);
-
   const { name, costForTwoMessage, avgRating, cuisines } =
     menuItem?.cards[2]?.card?.card?.info;
 
@@ -39,8 +41,12 @@ const ResturantMenu = () => {
             {cuisines.join(", ")} - {costForTwoMessage}
           </p>
         </div>
-        {categories.map((item) => (
-          <ResturantCategory key={item.card.card.title} data={item.card.card} />
+        {categories.map((item, index) => (
+          <ResturantCategory
+            key={item.card.card.title}
+            data={item.card.card}
+            showItem={index === 0 ? true : false}
+          />
         ))}
       </div>
     </>

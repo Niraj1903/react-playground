@@ -1,74 +1,18 @@
 const Shimmer = () => {
   return (
     <>
-      <div className="shimmer-container">
-        {/* <div class="flex items-center gap-6 p-4 bg-white">
-  <div class="shimmer h-6 w-24 rounded-md bg-gray-300"></div>
-  <div class="shimmer h-4 w-16 rounded-md bg-gray-300"></div>
-  <div class="shimmer h-4 w-16 rounded-md bg-gray-300"></div>
-  <div class="shimmer h-4 w-16 rounded-md bg-gray-300"></div>
-  <div class="shimmer h-6 flex-1 rounded-md bg-gray-300"></div>
-</div> */}
-        <div className="card">
-          <div className="shimmer image"></div>
-          <div className="shimmer line line1"></div>
-          <div className="shimmer line line2"></div>
-          <div className="shimmer line line3"></div>
-        </div>
-        <div className="card">
-          <div className="shimmer image"></div>
-          <div className="shimmer line line1"></div>
-          <div className="shimmer line line2"></div>
-          <div className="shimmer line line3"></div>
-        </div>
-        <div className="card">
-          <div className="shimmer image"></div>
-          <div className="shimmer line line1"></div>
-          <div className="shimmer line line2"></div>
-          <div className="shimmer line line3"></div>
-        </div>
-        <div className="card">
-          <div className="shimmer image"></div>
-          <div className="shimmer line line1"></div>
-          <div className="shimmer line line2"></div>
-          <div className="shimmer line line3"></div>
-        </div>
-        <div className="card">
-          <div className="shimmer image"></div>
-          <div className="shimmer line line1"></div>
-          <div className="shimmer line line2"></div>
-          <div className="shimmer line line3"></div>
-        </div>
-        <div className="card">
-          <div className="shimmer image"></div>
-          <div className="shimmer line line1"></div>
-          <div className="shimmer line line2"></div>
-          <div className="shimmer line line3"></div>
-        </div>
-        <div className="card">
-          <div className="shimmer image"></div>
-          <div className="shimmer line line1"></div>
-          <div className="shimmer line line2"></div>
-          <div className="shimmer line line3"></div>
-        </div>
-        <div className="card">
-          <div className="shimmer image"></div>
-          <div className="shimmer line line1"></div>
-          <div className="shimmer line line2"></div>
-          <div className="shimmer line line3"></div>
-        </div>
-        <div className="card">
-          <div className="shimmer image"></div>
-          <div className="shimmer line line1"></div>
-          <div className="shimmer line line2"></div>
-          <div className="shimmer line line3"></div>
-        </div>
-        <div className="card">
-          <div className="shimmer image"></div>
-          <div className="shimmer line line1"></div>
-          <div className="shimmer line line2"></div>
-          <div className="shimmer line line3"></div>
-        </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 p-6 animate-pulse">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <div
+            key={index}
+            className="border border-gray-200 rounded-lg p-4 w-full shadow-sm"
+          >
+            <div className="h-40 bg-gray-300 rounded mb-4"></div>
+            <div className="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
+            <div className="h-4 bg-gray-300 rounded w-1/2 mb-2"></div>
+            <div className="h-6 bg-gray-300 rounded w-1/4"></div>
+          </div>
+        ))}
       </div>
     </>
   );

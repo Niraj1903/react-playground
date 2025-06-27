@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router";
 import useNetworkStatus from "../utils/useNetworkStatus";
+import UserContext from "../utils/UserContext";
 
 export default function Header() {
   const networkStatus = useNetworkStatus();
-  const [btn, SetBtn] = useState("Login");
+  const { UserName } = useContext(UserContext);
+
+  const [btn, setBtn] = useState("Login");
+
   function toggle() {
-    SetBtn((prev) => (prev === "Login" ? "Logout" : "Login"));
+    setBtn((prev) => (prev === "Login" ? `Logout ${UserName}` : "Login"));
   }
   return (
     <>
