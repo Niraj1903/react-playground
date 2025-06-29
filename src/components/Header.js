@@ -4,12 +4,14 @@ import { useState, useContext } from "react";
 import { Link } from "react-router";
 import useNetworkStatus from "../utils/useNetworkStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const networkStatus = useNetworkStatus();
   const { UserName } = useContext(UserContext);
 
   const [btn, setBtn] = useState("Login");
+  const cartItems = useSelector((store) => store.cart.items);
 
   function toggle() {
     setBtn((prev) => (prev === "Login" ? `Logout ${UserName}` : "Login"));
@@ -40,7 +42,11 @@ export default function Header() {
             <li>
               <Link to="/instamart">InstaMart</Link>
             </li>
-            <li>Cart</li>
+
+            <li className="font-bold text-lg px-2">
+              <Link to="/cart"> Cart({cartItems.length} items)</Link>
+            </li>
+
             <button onClick={toggle}>{btn}</button>
           </ul>
         </div>

@@ -8,6 +8,9 @@ import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const InstaMart = lazy(() => import("./components/InstaMart"));
 const About = lazy(() => import("./components/About"));
@@ -15,12 +18,14 @@ export default function App() {
   const [userName, setUserName] = useState("Niraj");
   return (
     <>
-      <UserContext.Provider value={{ UserName: userName }}>
-        <div className="app">
-          <Header />
-          <Outlet />
-        </div>
-      </UserContext.Provider>
+      <Provider store={appStore}>
+        <UserContext.Provider value={{ UserName: userName }}>
+          <div className="app">
+            <Header />
+            <Outlet />
+          </div>
+        </UserContext.Provider>
+      </Provider>
     </>
   );
 }
@@ -58,6 +63,7 @@ const appRouter = createBrowserRouter([
         path: "/resturants/:resId",
         element: <ResturantMenu />,
       },
+      { path: "/cart", element: <Cart /> },
     ],
     errorElement: <Error />,
   },
