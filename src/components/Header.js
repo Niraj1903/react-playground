@@ -18,7 +18,7 @@ export default function Header() {
   }
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between bg-pink-100 shadow-lg sm:bg-yellow-50 lg:bg-green-50">
         <div className="logo-container">
           <img
             src="https://images.app.goo.gl/WUhgcwvffcubLNo36"
@@ -28,22 +28,22 @@ export default function Header() {
         </div>
 
         <div>
-          <ul className="flex m-10">
+          <ul className="flex p-4 m-4">
             <li>🛜{networkStatus ? "🟢" : "🔴"} </li>
-            <li>
+            <li className="px-4">
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li className="px-4">
               <Link to="/about">About us</Link>
             </li>
-            <li>
+            <li className="px-4">
               <Link to="/contact">Contact Us</Link>
             </li>
-            <li>
+            <li className="px-4">
               <Link to="/instamart">InstaMart</Link>
             </li>
 
-            <li className="font-bold text-lg px-2">
+            <li className="px-4 font-bold text-lg">
               <Link to="/cart"> Cart({cartItems.length} items)</Link>
             </li>
 

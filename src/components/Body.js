@@ -43,15 +43,16 @@ const Body = () => {
   ) : (
     <>
       <div className="body">
-        <div className="filter">
-          <div className="search">
+        <div className="filter flex">
+          <div className="search m-4 p-4">
             <input
               onChange={inputText}
               type="text"
-              className="search-box"
+              className="border border-solid border-black"
               value={filterList}
             />
             <button
+              className="px-4 py-2 bg-green-100 m-4 rounded-lg"
               onClick={() => {
                 const filteredResturant = listOfResturant.filter((res) => {
                   res.info.name
@@ -59,18 +60,17 @@ const Body = () => {
                     .includes(filterList.toLowerCase());
                   console.log(res);
                 });
-                console.log(filteredResturant);
                 setListOfResturant(filteredResturant);
               }}
             >
               Search
             </button>
           </div>
-          <button onClick={filter} className="filter-btn">
+          <button onClick={filter} className="m-4 p-4 flex items-center">
             Top Rated Resturant
           </button>
         </div>
-        <div className="res-container">
+        <div className="flex flex-wrap">
           {listOfResturant.map((item) => (
             <Link key={item.info.id} to={"/resturants/" + item.info.id}>
               {item.info.avgRating > 4.5 ? (
