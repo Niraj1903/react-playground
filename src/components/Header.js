@@ -18,7 +18,7 @@ export default function Header() {
   }
   return (
     <>
-      <div className="flex justify-between bg-pink-100 shadow-lg sm:bg-yellow-50 lg:bg-green-50">
+      <div className="flex justify-between bg-pink-100 shadow-lg sm:bg-yellow-50 lg:bg-green-50 sticky ">
         <div className="logo-container">
           <img
             src="https://images.app.goo.gl/WUhgcwvffcubLNo36"

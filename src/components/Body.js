@@ -26,17 +26,19 @@ const Body = () => {
       response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
+    setSearchFilteredList(
+      response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
 
   const [listOfResturant, setListOfResturant] = useState([]);
   const [filterList, setFilterList] = useState("");
+  const [searchFilteredList, setSearchFilteredList] = useState([]);
+  // console.log(filterList);
 
   if (networkStatus === false)
     return <h1>You are offline !! Please check your internet connection</h1>;
-
-  function inputText(e) {
-    setFilterList(e.target.value);
-  }
 
   return listOfResturant.length === 0 ? (
     <Shimmer />
@@ -46,7 +48,9 @@ const Body = () => {
         <div className="filter flex">
           <div className="search m-4 p-4">
             <input
-              onChange={inputText}
+              onChange={(e) => {
+                setFilterList(e.target.value);
+              }}
               type="text"
               className="border border-solid border-black"
               value={filterList}
@@ -54,24 +58,27 @@ const Body = () => {
             <button
               className="px-4 py-2 bg-green-100 m-4 rounded-lg"
               onClick={() => {
-                const filteredResturant = listOfResturant.filter((res) => {
-                  res.info.name
+                const filteredResturant = listOfResturant.filter((item) =>
+                  item.info.name
                     .toLowerCase()
-                    .includes(filterList.toLowerCase());
-                  console.log(res);
-                });
-                setListOfResturant(filteredResturant);
+                    .includes(filterList.toLowerCase())
+                );
+
+                setSearchFilteredList(filteredResturant);
               }}
             >
               Search
             </button>
           </div>
-          <button onClick={filter} className="m-4 p-4 flex items-center">
+          <button
+            onClick={filter}
+            className="m-4 p-4 flex items-center cursor-pointer"
+          >
             Top Rated Resturant
           </button>
         </div>
         <div className="flex flex-wrap">
-          {listOfResturant.map((item) => (
+          {searchFilteredList.map((item) => (
             <Link key={item.info.id} to={"/resturants/" + item.info.id}>
               {item.info.avgRating > 4.5 ? (
                 <ResturantCardPromoted resData={item} />
