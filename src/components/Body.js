@@ -35,7 +35,6 @@ const Body = () => {
   const [listOfResturant, setListOfResturant] = useState([]);
   const [filterList, setFilterList] = useState("");
   const [searchFilteredList, setSearchFilteredList] = useState([]);
-  // console.log(filterList);
 
   if (networkStatus === false)
     return <h1>You are offline !! Please check your internet connection</h1>;
