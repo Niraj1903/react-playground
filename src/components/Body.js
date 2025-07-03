@@ -1,4 +1,3 @@
-import data from "../utils/mockData";
 import ResturantCard, { withPromotedLabel } from "../components/ResturantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
@@ -11,8 +10,11 @@ const Body = () => {
   const networkStatus = useNetworkStatus();
 
   function filter() {
-    const filteredList = data.filter((item) => item.info.avgRating > 4);
-    setListOfResturant(filteredList);
+    const filteredList = searchFilteredList.filter(
+      (item) => item?.info?.avgRating > 4.3
+    );
+    setSearchFilteredList(filteredList);
+    console.log(filteredList);
   }
 
   useEffect(() => {
